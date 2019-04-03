@@ -70,12 +70,14 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - SRCountdownTimer (1.1)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - FirebaseUI/Auth
+  - SRCountdownTimer
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -92,6 +94,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - SRCountdownTimer
 
 SPEC CHECKSUMS:
   Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
@@ -107,7 +110,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  SRCountdownTimer: 9c92e444b5403c92f01dd6610299b8c634bc8562
 
-PODFILE CHECKSUM: ea39914f260622bf3f6c876a136405f5feaed865
+PODFILE CHECKSUM: 4bcafdde3c62ea3f4141b8977b83ff90e746bd3b
 
 COCOAPODS: 1.6.1

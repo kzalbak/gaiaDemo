@@ -20,6 +20,7 @@ class HomeScreenViewController: UIViewController, CBCentralManagerDelegate,CBPer
     
     var timeracc = 0.0
     var acc = 0.0
+
     /*
     JWGCircleCounter *circleCounter = [[JWGCircleCounter alloc] initWithFrame:CGRectMake(0,0,40,40)];
     ...
@@ -195,6 +196,7 @@ class HomeScreenViewController: UIViewController, CBCentralManagerDelegate,CBPer
         let calc5 = Int(ceil(final*1.05))
         let calc6 = Int(ceil(final*1.15))
         let calc7 = Int(ceil(final*1.25))
+        
         let bpmTemp:Int
         bpmTemp = Int(UInt(bpm!))
         var GSRL: String
@@ -246,9 +248,13 @@ class HomeScreenViewController: UIViewController, CBCentralManagerDelegate,CBPer
             Meter.image = UIImage(named: "MeterHigh")!
             Face.image = UIImage(named: "f5")!
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            let alert = UIAlertController(title: "Alert", message: "Chill out!", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            //let alert = UIAlertController(title: "Alert", message: "Chill out!", preferredStyle: UIAlertControllerStyle.alert)
+            //alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            //self.present(alert, animated: true, completion: nil)
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "countScreen")
+            self.present(nextViewController, animated:true, completion:nil)
             
             GSRL = "High"
             break
@@ -327,6 +333,11 @@ class HomeScreenViewController: UIViewController, CBCentralManagerDelegate,CBPer
         TimeH = ActTime / 3600 //Hours
         timeracc = timeracc + 1
         Timelbl.text = String(format: "%02d",TimeH) + ":" + String(format: "%02d", TimeM) + ":" + String(format: "%02d", TimeS)
+    }
+    
+    
+    @IBAction func playGame(_ sender: Any) {
+        self.performSegue(withIdentifier: "goGame", sender: self)
     }
     
     /*

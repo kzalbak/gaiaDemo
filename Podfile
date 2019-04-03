@@ -10,5 +10,6 @@ target 'gaiaDemo' do
 	pod 'FirebaseUI/Auth'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'
+	pod 'SRCountdownTimer'
 
 end

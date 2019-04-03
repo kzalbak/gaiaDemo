@@ -133,7 +133,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.connectedPeripheral = connectedPeripheral
     }
     //Get current connected perpheral
-    //GET THE NAME AND SEND IT TO DIFFERENT CLASS
     func getCurrentConnectedPeripheral() -> CBPeripheral? {
         print(self.connectedPeripheral?.name)
         return self.connectedPeripheral
@@ -172,9 +171,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "splashScreen")
         self.present(nextViewController, animated:true, completion:nil)
-        
-        
-        
     }
     
     
