@@ -236,7 +236,7 @@
 				TargetAttributes = {
 					7B4FF40B1DF5912E008E1256 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = HVQJMXZU28;
+						DevelopmentTeam = T7UJ3J633W;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -505,7 +505,7 @@
 			baseConfigurationReference = 9C436BB3E5996CB32F1AA109 /* Pods-gaiaDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HVQJMXZU28;
+				DEVELOPMENT_TEAM = T7UJ3J633W;
 				INFOPLIST_FILE = BLE_Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -520,7 +520,7 @@
 			baseConfigurationReference = 27FAD969F48FF82EECABB7E0 /* Pods-gaiaDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HVQJMXZU28;
+				DEVELOPMENT_TEAM = T7UJ3J633W;
 				INFOPLIST_FILE = BLE_Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

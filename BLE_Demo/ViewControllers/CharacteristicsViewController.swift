@@ -33,11 +33,11 @@ class CharacteristicsViewController: UIViewController, UITableViewDataSource, UI
             discovery = BLEDeviceDiscoverServices()
         }
             discovery?.delegate = self
-            discovery?.discoverAllCharacteristics(peripheral: currentPeripheral!, service: selectedService!)
+        discovery?.discoverAllCharacteristics(peripheral:@objc  currentPeripheral!, peripheral: <#CBPeripheral#>, service: selectedService!)
     }
     func setServiceNavigation() {
         let rightBarBtn = UIBarButtonItem(title: "Connected", style: .plain, target: self, action: #selector(ServiceViewController.settingAction))
-        rightBarBtn.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .normal)
+        rightBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.blue], for: .normal)
         //rightBarBtn.tintColor = UIColor.black
         //rightBarBtn.title = "Connected"
         self.navigationItem.rightBarButtonItem = rightBarBtn

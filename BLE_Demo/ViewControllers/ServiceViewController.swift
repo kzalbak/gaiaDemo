@@ -29,12 +29,12 @@ class ServiceViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     func setServiceNavigation() {
         let rightBarBtn = UIBarButtonItem(title: "Connected", style: .plain, target: self, action: #selector(ServiceViewController.settingAction))
-        rightBarBtn.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .normal)
+        rightBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.blue], for: .normal)
         self.navigationItem.rightBarButtonItem = rightBarBtn
         self.navigationItem.title = "SERVICES"
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
     }
-    func settingAction(sender: UIBarButtonItem) {
+    @objc func settingAction(sender: UIBarButtonItem) {
     
     }
     func numberOfSections(in tableView: UITableView) -> Int {

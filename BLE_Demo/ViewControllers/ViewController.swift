@@ -97,7 +97,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
-     func pairingAction(_ sender: AnyObject) {
+    @objc func pairingAction(_ sender: AnyObject) {
         self.view.isUserInteractionEnabled = false
         self.activityIndicator.startAnimating()
         let pairTag: Int? = sender.tag
@@ -138,7 +138,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return self.connectedPeripheral
     }
     func setServiceNavigation() {
-         navigationController!.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Helvetica Neue", size: 12.0)!, NSForegroundColorAttributeName: UIColor.black]
+        navigationController!.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Helvetica Neue", size: 12.0)!, NSAttributedStringKey.foregroundColor: UIColor.black]
     }
 
     //Scan for devices
