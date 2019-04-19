@@ -31,11 +31,15 @@ class ServiceViewController: UIViewController, UITableViewDelegate, UITableViewD
         let rightBarBtn = UIBarButtonItem(title: "Connected", style: .plain, target: self, action: #selector(ServiceViewController.settingAction))
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:BLE_Demo/ServiceViewController.swift
         rightBarBtn.setTitleTextAttributes(convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.blue]), for: .normal)
 =======
         rightBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.blue], for: .normal)
 >>>>>>> 2d5f0b2375c369c0db9578bbbf70430c7d61cf47:BLE_Demo/ViewControllers/ServiceViewController.swift
+=======
+        rightBarBtn.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .normal)
+>>>>>>> parent of 2d5f0b2... update
 =======
         rightBarBtn.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .normal)
 >>>>>>> parent of 2d5f0b2... update
