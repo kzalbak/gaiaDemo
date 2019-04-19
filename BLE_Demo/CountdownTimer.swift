@@ -31,6 +31,7 @@ class CountdownTimer {
         let minutesToSeconds = minutes * 60
         let secondsToSeconds = seconds
         
+
         let seconds = secondsToSeconds + minutesToSeconds + hoursToSeconds
         self.seconds = Double(seconds)
         self.duration = Double(seconds)
