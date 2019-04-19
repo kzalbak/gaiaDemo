@@ -38,11 +38,15 @@ class CharacteristicsViewController: UIViewController, UITableViewDataSource, UI
     @objc func setServiceNavigation() {
         let rightBarBtn = UIBarButtonItem(title: "Connected", style: .plain, target: self, action: #selector(ServiceViewController.settingAction))
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:BLE_Demo/CharacteristicsViewController.swift
         rightBarBtn.setTitleTextAttributes(convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.blue]), for: .normal)
 =======
         rightBarBtn.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.blue], for: .normal)
 >>>>>>> 2d5f0b2375c369c0db9578bbbf70430c7d61cf47:BLE_Demo/ViewControllers/CharacteristicsViewController.swift
+=======
+        rightBarBtn.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .normal)
+>>>>>>> parent of 2d5f0b2... update
 =======
         rightBarBtn.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .normal)
 >>>>>>> parent of 2d5f0b2... update

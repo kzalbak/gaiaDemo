@@ -238,11 +238,15 @@
 						CreatedOnToolsVersion = 8.1;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 						DevelopmentTeam = HVQJMXZU28;
 						LastSwiftMigration = 1010;
 =======
 						DevelopmentTeam = T7UJ3J633W;
 >>>>>>> 2d5f0b2375c369c0db9578bbbf70430c7d61cf47
+=======
+						DevelopmentTeam = HVQJMXZU28;
+>>>>>>> parent of 2d5f0b2... update
 =======
 						DevelopmentTeam = HVQJMXZU28;
 >>>>>>> parent of 2d5f0b2... update
