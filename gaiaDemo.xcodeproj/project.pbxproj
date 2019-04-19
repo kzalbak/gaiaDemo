@@ -94,6 +94,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68AA9BF82267D88A00696733 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7B4FF4251DF595FD008E1256 /* ServiceViewController.swift */,
+				CEBE9EF12240012F0073D1AC /* SplashScreenViewController.swift */,
+				CE0D4DC72242DFDF000C914A /* HomeScreenViewController.swift */,
+				CE0D4DCF224FE889000C914A /* TicTacViewController.swift */,
+				CE0D4DC52242C205000C914A /* SignInViewController.swift */,
+				CEBE9F0122417D980073D1AC /* LoginViewController.swift */,
+				CE0D4DC32242ACF3000C914A /* SignUpViewController.swift */,
+				CE0D4DD1224FF0BD000C914A /* CountdownViewController.swift */,
+				7B4FF4271DF5961A008E1256 /* CharacteristicsViewController.swift */,
+				7B4FF4111DF5912E008E1256 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		7B4FF4031DF5912E008E1256 = {
 			isa = PBXGroup;
 			children = (
@@ -115,11 +132,9 @@
 		7B4FF40E1DF5912E008E1256 /* BLE_Demo */ = {
 			isa = PBXGroup;
 			children = (
+				68AA9BF82267D88A00696733 /* ViewControllers */,
 				7B4FF4371DF68C74008E1256 /* BLE */,
 				7B4FF40F1DF5912E008E1256 /* AppDelegate.swift */,
-				7B4FF4111DF5912E008E1256 /* ViewController.swift */,
-				7B4FF4251DF595FD008E1256 /* ServiceViewController.swift */,
-				7B4FF4271DF5961A008E1256 /* CharacteristicsViewController.swift */,
 				7B4FF4131DF5912E008E1256 /* Main.storyboard */,
 				7B4FF4161DF5912E008E1256 /* Assets.xcassets */,
 				7B4FF4181DF5912E008E1256 /* LaunchScreen.storyboard */,
@@ -128,15 +143,8 @@
 				7B4FF4221DF591DB008E1256 /* DeviceTableViewCell.xib */,
 				7B4FF4311DF68758008E1256 /* ServiceTableViewCell.swift */,
 				7B4FF4321DF68758008E1256 /* ServiceTableViewCell.xib */,
-				CEBE9EF12240012F0073D1AC /* SplashScreenViewController.swift */,
-				CEBE9F0122417D980073D1AC /* LoginViewController.swift */,
 				CEBE9F0722417F050073D1AC /* GoogleService-Info.plist */,
-				CE0D4DC32242ACF3000C914A /* SignUpViewController.swift */,
-				CE0D4DC52242C205000C914A /* SignInViewController.swift */,
-				CE0D4DC72242DFDF000C914A /* HomeScreenViewController.swift */,
 				CE0D4DCD224FD7C2000C914A /* ticTacToe.swift */,
-				CE0D4DCF224FE889000C914A /* TicTacViewController.swift */,
-				CE0D4DD1224FF0BD000C914A /* CountdownViewController.swift */,
 				CE0D4DD3224FF106000C914A /* CountdownTimer.swift */,
 				CE0D4DD5224FF13F000C914A /* ProgressBar.swift */,
 				CE0D4DD7224FF165000C914A /* CustomColors.swift */,
