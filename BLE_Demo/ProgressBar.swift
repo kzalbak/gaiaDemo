@@ -15,12 +15,12 @@ class ProgressBar: UIView, CAAnimationDelegate {
     fileprivate var animationDidStart = false
     fileprivate var timerDuration = 0
     
-    lazy var fgProgressLayer: CAShapeLayer = {
+    @objc lazy var fgProgressLayer: CAShapeLayer = {
         let fgProgressLayer = CAShapeLayer()
         return fgProgressLayer
     }()
     
-    lazy var bgProgressLayer: CAShapeLayer = {
+    @objc lazy var bgProgressLayer: CAShapeLayer = {
         let bgProgressLayer = CAShapeLayer()
         return bgProgressLayer
     }()
@@ -104,14 +104,14 @@ class ProgressBar: UIView, CAAnimationDelegate {
     }
     
     
-    public func setProgressBar(hours:Int, minutes:Int, seconds:Int) {
+    @objc public func setProgressBar(hours:Int, minutes:Int, seconds:Int) {
         let hoursToSeconds = hours * 3600
         let minutesToSeconds = minutes * 60
         let totalSeconds = seconds + minutesToSeconds + hoursToSeconds
         timerDuration = totalSeconds
     }
     
-    public func start() {
+    @objc public func start() {
         if !animationDidStart {
             startAnimation()
         }else{
@@ -119,11 +119,11 @@ class ProgressBar: UIView, CAAnimationDelegate {
         }
     }
     
-    public func pause() {
+    @objc public func pause() {
         pauseAnimation()
     }
     
-    public func stop() {
+    @objc public func stop() {
         stopAnimation()
     }
     
@@ -140,7 +140,7 @@ class ProgressBar: UIView, CAAnimationDelegate {
         animation.delegate = self
         animation.isRemovedOnCompletion = false
         animation.isAdditive = true
-        animation.fillMode = kCAFillModeForwards
+        animation.fillMode = CAMediaTimingFillMode.forwards
         fgProgressLayer.add(animation, forKey: "strokeEnd")
         animationDidStart = true
         

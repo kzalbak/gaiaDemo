@@ -51,7 +51,7 @@ class TicTacViewController: UIViewController {
         updateState()
     }
     
-    func updateState() {
+    @objc func updateState() {
         lblStatus.text = ticTacToe.checkStatus().rawValue
     }
     

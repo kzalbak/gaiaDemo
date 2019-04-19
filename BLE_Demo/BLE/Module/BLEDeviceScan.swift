@@ -34,27 +34,27 @@ struct DisplayPeripheral {
 }
 
 class BLEDeviceScan: NSObject, DeviceScaningDelegate {
-   weak var delegate: DeviceScannedDelegate?
+   @objc weak var delegate: DeviceScannedDelegate?
     var peripherals: [DisplayPeripheral] = []
     override init() {
         super.init()
     }
     // To Scan all Devices
-    func scanAllDevices() {
+    @objc func scanAllDevices() {
         BLEManager.getSharedBLEManager().scaningDelegate = self
         BLEManager.getSharedBLEManager().scanAllDevices()
     }
     // To Scan Devices by Their Services UUIDs
-    func scanDeviceByServiceUUID(serviceUUIDs: NSArray?, options: [String : Any]?) {
+    @objc func scanDeviceByServiceUUID(serviceUUIDs: NSArray?, options: [String : Any]?) {
         BLEManager.getSharedBLEManager().scaningDelegate = self
         BLEManager.getSharedBLEManager().scanDevice(serviceUUIDs: serviceUUIDs, options: options)
     }
     // Stop Scan
-    func stopScan() {
+    @objc func stopScan() {
         BLEManager.getSharedBLEManager().stopScan()
     }
     // This will be triggered once BLE Device will be discoverd.
-    func bleManagerDiscover(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    @objc func bleManagerDiscover(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         for (index, foundPeripheral) in peripherals.enumerated() {
             if foundPeripheral.peripheral?.identifier == peripheral.identifier {
                 peripherals[index].lastRSSI = RSSI
@@ -69,7 +69,7 @@ class BLEDeviceScan: NSObject, DeviceScaningDelegate {
     }
     
     // This will be trigerred once device cinfiguration status will be changed.
-    func scanningStatus(status: Int) {
+    @objc func scanningStatus(status: Int) {
         delegate?.postBLEConnectionStatus!(status: status)
     }
 }

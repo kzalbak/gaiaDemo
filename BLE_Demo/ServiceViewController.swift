@@ -11,9 +11,9 @@ import CoreBluetooth
 class ServiceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DiscoveryDelegate {
 
     @IBOutlet weak var serviceTableView: UITableView!
-    var currentPeripheral: CBPeripheral?
-    var services: NSArray?
-    var discovery: BLEDeviceDiscoverServices?
+    @objc var currentPeripheral: CBPeripheral?
+    @objc var services: NSArray?
+    @objc var discovery: BLEDeviceDiscoverServices?
     override func viewDidLoad() {
         super.viewDidLoad()
         if currentPeripheral != nil {
@@ -27,14 +27,14 @@ class ServiceViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func setServiceNavigation() {
+    @objc func setServiceNavigation() {
         let rightBarBtn = UIBarButtonItem(title: "Connected", style: .plain, target: self, action: #selector(ServiceViewController.settingAction))
-        rightBarBtn.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .normal)
+        rightBarBtn.setTitleTextAttributes(convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.blue]), for: .normal)
         self.navigationItem.rightBarButtonItem = rightBarBtn
         self.navigationItem.title = "SERVICES"
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
     }
-    func settingAction(sender: UIBarButtonItem) {
+    @objc func settingAction(sender: UIBarButtonItem) {
     
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,7 +68,7 @@ class ServiceViewController: UIViewController, UITableViewDelegate, UITableViewD
     func postDicoverdServiceFailed(error: NSError?) {
     }
     //Discover all the services of the connected device
-    func discoverServices(peripheral: CBPeripheral) {
+    @objc func discoverServices(peripheral: CBPeripheral) {
         if discovery == nil {
             discovery = BLEDeviceDiscoverServices()
         }
@@ -91,4 +91,15 @@ class ServiceViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     */
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

@@ -42,10 +42,10 @@ public class SRCountdownTimer: UIView {
     @IBInspectable public var labelTextColor: UIColor?
     @IBInspectable public var timerFinishingText: String?
 
-    public weak var delegate: SRCountdownTimerDelegate?
+    @objc public weak var delegate: SRCountdownTimerDelegate?
     
     // use minutes and seconds for presentation
-    public var useMinutesAndSecondsRepresentation = false
+    @objc public var useMinutesAndSecondsRepresentation = false
 
     private var timer: Timer?
     private var beginingValue: Int = 1
@@ -142,7 +142,7 @@ public class SRCountdownTimer: UIView {
      *   - beginingValue: Value to start countdown from.
      *   - interval: Interval between reducing the counter(1 second by default)
      */
-    public func start(beginingValue: Int, interval: TimeInterval = 1) {
+    @objc public func start(beginingValue: Int, interval: TimeInterval = 1) {
         self.beginingValue = beginingValue
         self.interval = interval
 
@@ -153,7 +153,7 @@ public class SRCountdownTimer: UIView {
         timer?.invalidate()
         timer = Timer(timeInterval: fireInterval, target: self, selector: #selector(SRCountdownTimer.timerFired(_:)), userInfo: nil, repeats: true)
 
-        RunLoop.main.add(timer!, forMode: .commonModes)
+        RunLoop.main.add(timer!, forMode: RunLoop.Mode.common)
 
         delegate?.timerDidStart?()
     }
@@ -161,7 +161,7 @@ public class SRCountdownTimer: UIView {
     /**
      * Pauses the timer with saving the current state
      */
-    public func pause() {
+    @objc public func pause() {
         timer?.fireDate = Date.distantFuture
 
         delegate?.timerDidPause?()
@@ -170,7 +170,7 @@ public class SRCountdownTimer: UIView {
     /**
      * Resumes the timer from the current state
      */
-    public func resume() {
+    @objc public func resume() {
         timer?.fireDate = Date()
 
         delegate?.timerDidResume?()
@@ -179,7 +179,7 @@ public class SRCountdownTimer: UIView {
     /**
      * End the timer
      */
-    public func end() {
+    @objc public func end() {
         self.currentCounterValue = 0
         timer?.invalidate()
         

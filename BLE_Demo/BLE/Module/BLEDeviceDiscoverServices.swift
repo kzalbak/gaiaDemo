@@ -30,40 +30,40 @@ import CoreBluetooth
 
 }
 class BLEDeviceDiscoverServices: NSObject, ServicesDiscoveryDelegate {
-    var services: [CBService] = []
-    var characterstics: [CBCharacteristic] = []
-    var descriptors: [CBDescriptor] = []
-    weak var delegate: DiscoveryDelegate?
+    @objc var services: [CBService] = []
+    @objc var characterstics: [CBCharacteristic] = []
+    @objc var descriptors: [CBDescriptor] = []
+    @objc weak var delegate: DiscoveryDelegate?
     override init() {
         super.init()
     }
     // Discover All Services.
-    func discoverAllServices(peripheral: CBPeripheral) {
+    @objc func discoverAllServices(peripheral: CBPeripheral) {
        BLEManager.getSharedBLEManager().discoveryDelegate = self
        BLEManager.getSharedBLEManager().discoverAllServices(peripheral: peripheral)
     }
     // Discover Specific Services.
-    func discoverServiceByUUIDs(servicesUUIDs: NSArray, peripheral: CBPeripheral) {
+    @objc func discoverServiceByUUIDs(servicesUUIDs: NSArray, peripheral: CBPeripheral) {
         BLEManager.getSharedBLEManager().discoveryDelegate = self
         BLEManager.getSharedBLEManager().discoverServiceByUUIDs(servicesUUIDs: servicesUUIDs as NSArray, peripheral: peripheral)
     }
     // Discover all Characteristics by any Service.
-    func discoverAllCharacteristics(peripheral: CBPeripheral, service: CBService) {
+    @objc func discoverAllCharacteristics(peripheral: CBPeripheral, service: CBService) {
         BLEManager.getSharedBLEManager().discoveryDelegate = self
         BLEManager.getSharedBLEManager().discoverAllCharacteristics(peripheral: peripheral, service: service)
     }
     // Discover Specific Characteristics by any Service.
-    func discoverCharacteristicsByUUIDs(charUUIds: NSArray, peripheral: CBPeripheral, service: CBService) {
+    @objc func discoverCharacteristicsByUUIDs(charUUIds: NSArray, peripheral: CBPeripheral, service: CBService) {
         BLEManager.getSharedBLEManager().discoveryDelegate = self
         BLEManager.getSharedBLEManager().discoverCharacteristicsByUUIDs(charUUIds: charUUIds as NSArray, peripheral: peripheral, service: service)
     }
     // Discover Descriptors By Characteristics.
-    func discoverDescriptorsByCharacteristic(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+    @objc func discoverDescriptorsByCharacteristic(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
         BLEManager.getSharedBLEManager().discoveryDelegate = self
         BLEManager.getSharedBLEManager().discoverDescriptorsByCharacteristic(peripheral: peripheral, characteristic: characteristic)
     }
     // This method will be triggered once Services will be discovered.
-    func bleManagerDiscoverService(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+    @objc func bleManagerDiscoverService(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if error != nil {
             delegate?.postDicoverdServiceFailed!(error: error as NSError?)
         } else {
@@ -76,7 +76,7 @@ class BLEDeviceDiscoverServices: NSObject, ServicesDiscoveryDelegate {
     }
     
     // This Method will be triggered once Characteristics will be Discovered.
-    func bleManagerDiscoverCharacteristics(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+    @objc func bleManagerDiscoverCharacteristics(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if error != nil {
             delegate?.PostDicoverdCharacteristicesFailed!(error: error as NSError?)
         } else {
@@ -88,7 +88,7 @@ class BLEDeviceDiscoverServices: NSObject, ServicesDiscoveryDelegate {
         }
     }
     // This Mehtod will be triggered once Descriptors will be discovered.
-    func bleManagerDiscoverDescriptors(_ peripheral: CBPeripheral, didDiscoverDescriptorsFor characteristic: CBCharacteristic, error: Error?) {
+    @objc func bleManagerDiscoverDescriptors(_ peripheral: CBPeripheral, didDiscoverDescriptorsFor characteristic: CBCharacteristic, error: Error?) {
         if error != nil {
             delegate?.postDicoverdDiscriptorsFailed!(error: error as NSError?)
         } else {

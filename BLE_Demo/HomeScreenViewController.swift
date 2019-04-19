@@ -18,8 +18,8 @@ class HomeScreenViewController: UIViewController, CBCentralManagerDelegate,CBPer
     @IBOutlet weak var Meter: UIImageView!
     @IBOutlet weak var Face: UIImageView!
     
-    var timeracc = 0.0
-    var acc = 0.0
+    @objc var timeracc = 0.0
+    @objc var acc = 0.0
 
     /*
     JWGCircleCounter *circleCounter = [[JWGCircleCounter alloc] initWithFrame:CGRectMake(0,0,40,40)];
@@ -28,13 +28,13 @@ class HomeScreenViewController: UIViewController, CBCentralManagerDelegate,CBPer
     */
     
     //central manager, receiving data
-    var centralManager:CBCentralManager!
+    @objc var centralManager:CBCentralManager!
     //peripheral manager, sending data
-    var connectingPeripheral:CBPeripheral!
+    @objc var connectingPeripheral:CBPeripheral!
     
     
     /////////Polar Heart Rate////////////
-    let HSP3_5_UUID = "180D"
+    @objc let HSP3_5_UUID = "180D"
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -167,7 +167,7 @@ class HomeScreenViewController: UIViewController, CBCentralManagerDelegate,CBPer
         }
     }
 
-    func update(heartRateData:Data){
+    @objc func update(heartRateData:Data){
         print("--- UPDATING ..")
         var buffer = [UInt8](repeating: 0x00, count: heartRateData.count)
         heartRateData.copyBytes(to: &buffer, count: buffer.count)
@@ -300,13 +300,13 @@ class HomeScreenViewController: UIViewController, CBCentralManagerDelegate,CBPer
     }
     
     // For Timer
-    var ActTime = 0
-    var TimeS = 0
-    var TimeM = 0
-    var TimeH = 0
+    @objc var ActTime = 0
+    @objc var TimeS = 0
+    @objc var TimeM = 0
+    @objc var TimeH = 0
     
     // Actual Timer
-    var timerA = Timer()
+    @objc var timerA = Timer()
     
     /*
     @IBAction func startTimer(_ sender: Any) {
@@ -326,7 +326,7 @@ class HomeScreenViewController: UIViewController, CBCentralManagerDelegate,CBPer
         */
     }
     
-    func ActStart(){
+    @objc func ActStart(){
         ActTime += 1//Actual Time
         TimeS = ActTime % 60 //Seconds
         TimeM = (ActTime / 60) % 60 //Minutes

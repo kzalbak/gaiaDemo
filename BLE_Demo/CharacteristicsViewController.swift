@@ -10,10 +10,10 @@ import UIKit
 import CoreBluetooth
 class CharacteristicsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DiscoveryDelegate {
     @IBOutlet weak var characteristicTableView: UITableView!
-    var currentPeripheral: CBPeripheral?
-    var selectedService: CBService?
-    var discoveredCharacteristics: NSArray?
-    var discovery: BLEDeviceDiscoverServices?
+    @objc var currentPeripheral: CBPeripheral?
+    @objc var selectedService: CBService?
+    @objc var discoveredCharacteristics: NSArray?
+    @objc var discovery: BLEDeviceDiscoverServices?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.characteristicTableView.register(UINib(nibName: "ServiceTableViewCell", bundle: nil), forCellReuseIdentifier: "serviceCell" )
@@ -28,23 +28,23 @@ class CharacteristicsViewController: UIViewController, UITableViewDataSource, UI
         // Dispose of any resources that can be recreated.
     }
     //Discover characteristics of the selected service
-    func getChracteristicsOfServices(peripheral: CBPeripheral, service: CBService) {
+    @objc func getChracteristicsOfServices(peripheral: CBPeripheral, service: CBService) {
         if discovery == nil {
             discovery = BLEDeviceDiscoverServices()
         }
             discovery?.delegate = self
             discovery?.discoverAllCharacteristics(peripheral: currentPeripheral!, service: selectedService!)
     }
-    func setServiceNavigation() {
+    @objc func setServiceNavigation() {
         let rightBarBtn = UIBarButtonItem(title: "Connected", style: .plain, target: self, action: #selector(ServiceViewController.settingAction))
-        rightBarBtn.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blue], for: .normal)
+        rightBarBtn.setTitleTextAttributes(convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.blue]), for: .normal)
         //rightBarBtn.tintColor = UIColor.black
         //rightBarBtn.title = "Connected"
         self.navigationItem.rightBarButtonItem = rightBarBtn
         self.navigationItem.title = "CHARACTERISTICS"
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
     }
-    func settingAction(sender: UIBarButtonItem) {
+    @objc func settingAction(sender: UIBarButtonItem) {
         
     }
     // MARK: - Table View
@@ -85,4 +85,15 @@ class CharacteristicsViewController: UIViewController, UITableViewDataSource, UI
     }
     */
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

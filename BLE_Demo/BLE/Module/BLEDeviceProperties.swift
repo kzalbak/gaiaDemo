@@ -33,38 +33,38 @@ import CoreBluetooth
     @objc optional func postReadDecriptorValueFailed(error: Error?)
 }
 class BLEDeviceProperties: NSObject, ReadWirteCharteristicDelegate {
-    weak var delegate: PropertiesDelegate?
+    @objc weak var delegate: PropertiesDelegate?
     override init() {
         super.init()
         
     }
     // Wrie value for any Characteristic.
-    func writeCharacteristicValue(peripheral: CBPeripheral, data: Data, char: CBCharacteristic, type: CBCharacteristicWriteType) {
+    @objc func writeCharacteristicValue(peripheral: CBPeripheral, data: Data, char: CBCharacteristic, type: CBCharacteristicWriteType) {
         BLEManager.getSharedBLEManager().readWriteCharDelegate = self
         BLEManager.getSharedBLEManager().writeCharacteristicValue(peripheral: peripheral, data: data, char: char, type: type)
     }
     // Read value for any Characteristic.
-    func readCharacteristicValue(peripheral: CBPeripheral, char: CBCharacteristic) {
+    @objc func readCharacteristicValue(peripheral: CBPeripheral, char: CBCharacteristic) {
         BLEManager.getSharedBLEManager().readWriteCharDelegate = self
         BLEManager.getSharedBLEManager().readCharacteristicValue(peripheral: peripheral, char: char)
     }
     // To Set Enable Notify value for any Characteristic.
-    func setNotifyValue(peripheral: CBPeripheral, enabled: Bool, char: CBCharacteristic) {
+    @objc func setNotifyValue(peripheral: CBPeripheral, enabled: Bool, char: CBCharacteristic) {
         BLEManager.getSharedBLEManager().readWriteCharDelegate = self
         BLEManager.getSharedBLEManager().setNotifyValue(peripheral: peripheral, enabled: enabled, char: char)
     }
     // Write Descriptor value for any descriptor.
-    func writeDescriptorValue(peripheral: CBPeripheral, data: Data, descriptor: CBDescriptor) {
+    @objc func writeDescriptorValue(peripheral: CBPeripheral, data: Data, descriptor: CBDescriptor) {
         BLEManager.getSharedBLEManager().readWriteCharDelegate = self
        BLEManager.getSharedBLEManager().writeDescriptorValue(peripheral: peripheral, data: data, descriptor: descriptor)
     }
     // Read Descriptor value for any descriptor.
-    func readDescriptorValue(peripheral: CBPeripheral, descriptor: CBDescriptor) {
+    @objc func readDescriptorValue(peripheral: CBPeripheral, descriptor: CBDescriptor) {
         BLEManager.getSharedBLEManager().readWriteCharDelegate = self
         BLEManager.getSharedBLEManager().readDescriptorValue(peripheral: peripheral, descriptor: descriptor)
     }
     // This method will be triggered once Characteristics will be updated.
-    func bleManagerDidWriteValueForChar(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+    @objc func bleManagerDidWriteValueForChar(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         if error != nil {
             delegate?.postWriteCharacteristicValueFailed!(error: error)
         } else {
@@ -72,7 +72,7 @@ class BLEDeviceProperties: NSObject, ReadWirteCharteristicDelegate {
         }
     }
     // This Mehtod will be triggered once Characteristics will be read.
-    func bleManagerDidUpdateValueForChar(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+    @objc func bleManagerDidUpdateValueForChar(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if error != nil {
             delegate?.postReadCharacteristicValueFailed!(error: error)
         } else {
@@ -80,7 +80,7 @@ class BLEDeviceProperties: NSObject, ReadWirteCharteristicDelegate {
         }
     }
     // This Mehtod will be triggered once Descriptor will be updated.
-    func bleManagerDidWriteValueForDesc(_ peripheral: CBPeripheral, didWriteValueFor descriptor: CBDescriptor, error: Error?) {
+    @objc func bleManagerDidWriteValueForDesc(_ peripheral: CBPeripheral, didWriteValueFor descriptor: CBDescriptor, error: Error?) {
         if error != nil {
             delegate?.postWriteDescriptorValueFailed!(error: error)
         } else {
@@ -88,7 +88,7 @@ class BLEDeviceProperties: NSObject, ReadWirteCharteristicDelegate {
         }
     }
     // This Mehtod will be triggered once Descriptor will be read.
-    func bleManagerDidUpdateValueForDesc(_ peripheral: CBPeripheral, didUpdateValueFor descriptor: CBDescriptor, error: Error?) {
+    @objc func bleManagerDidUpdateValueForDesc(_ peripheral: CBPeripheral, didUpdateValueFor descriptor: CBDescriptor, error: Error?) {
         if error != nil {
             delegate?.postReadDecriptorValueFailed!(error: error)
         } else {
@@ -96,7 +96,7 @@ class BLEDeviceProperties: NSObject, ReadWirteCharteristicDelegate {
         }
     }
     // This Mehtod will be triggered once Characteristics will be Notified.
-    func bleManagerDidUpdateNotificationState(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
+    @objc func bleManagerDidUpdateNotificationState(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
         if error != nil {
             delegate?.postNotifyValueUpdateFailed!(error: error)
         } else {

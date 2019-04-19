@@ -853,7 +853,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57F-r4-bo7" customClass="ProgressBar" customModule="CountdownTimer" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57F-r4-bo7" customClass="ProgressBar" customModule="gaiaDemo" customModuleProvider="target">
                                 <rect key="frame" x="10" y="134" width="300" height="300"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -865,7 +865,7 @@
                                 <rect key="frame" x="16" y="488" width="288" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WB9-Xy-1NM">
-                                        <rect key="frame" x="0.0" y="0.0" width="169.5" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="39" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="d97-cC-lq3"/>
                                             <constraint firstAttribute="width" constant="169.5" id="yEO-kS-Hux"/>
@@ -879,7 +879,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7u-C1-nn3">
-                                        <rect key="frame" x="241" y="0.0" width="47" height="50"/>
+                                        <rect key="frame" x="114.5" y="0.0" width="173.5" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="173.5" id="26I-oy-WIN"/>
                                             <constraint firstAttribute="height" constant="50" id="LpF-xk-sK7"/>

@@ -33,11 +33,11 @@ class BLEDeviceRSSI: NSObject, ReadRSSIValueDelegate {
         BLEManager.getSharedBLEManager().readRSSIdelegate = self
     }
     // Read RSSI Value
-    func readRSSI(peripheral: CBPeripheral) {
+    @objc func readRSSI(peripheral: CBPeripheral) {
         BLEManager.getSharedBLEManager().readRSSI(peripheral: peripheral)
     }
     // This Methid will be triggered once RSSI value will be fetched.
-    func bleManagerReadRSSIValue(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
+    @objc func bleManagerReadRSSIValue(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
         if error != nil {
          delegate?.postRSSIValueFailed(error: error)
         } else {

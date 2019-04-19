@@ -52,21 +52,21 @@ protocol ReadRSSIValueDelegate:class {
 private var sharedBLEManager: BLEManager? = nil
 
 class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
-    var centralManager: CBCentralManager?
+    @objc var centralManager: CBCentralManager?
     weak var scaningDelegate: DeviceScaningDelegate?
     weak var connectionDelegate: DeviceConnectionDelegate?
     weak var discoveryDelegate: ServicesDiscoveryDelegate?
     weak var readWriteCharDelegate: ReadWirteCharteristicDelegate?
     weak var readRSSIdelegate: ReadRSSIValueDelegate?
-    weak var stopScanTimer: Timer?
-    static func getSharedBLEManager () -> BLEManager {
+    @objc weak var stopScanTimer: Timer?
+    @objc static func getSharedBLEManager () -> BLEManager {
         if sharedBLEManager == nil {
             sharedBLEManager = BLEManager()
         }
         return sharedBLEManager!
     }
    // MARK: Intializing BLE CentralManager
-    func initCentralManager(queue: DispatchQueue?, options: [String : Any]?) {
+    @objc func initCentralManager(queue: DispatchQueue?, options: [String : Any]?) {
         if self.centralManager == nil {
             centralManager = CBCentralManager(delegate: self, queue: queue, options: options)
         }
@@ -154,10 +154,10 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         readWriteCharDelegate?.bleManagerDidUpdateValueForDesc(peripheral, didUpdateValueFor: descriptor, error: error)
     }
     // MARK: Scanning Process
-    func scanAllDevices() {
+    @objc func scanAllDevices() {
         self.scanDevice(serviceUUIDs: nil, options: nil)
     }
-    func scanDevice(serviceUUIDs: NSArray?, options: [String : Any]?) {
+    @objc func scanDevice(serviceUUIDs: NSArray?, options: [String : Any]?) {
         if stopScanTimer != nil {
             stopScanTimer?.invalidate()
             stopScanTimer = nil
@@ -165,63 +165,63 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         centralManager?.scanForPeripherals(withServices: (serviceUUIDs as? [CBUUID]?)!, options: options)
         self.applyStopScanTimer()
     }
-    func stopScan() {
+    @objc func stopScan() {
         centralManager?.stopScan()
     }
-    func stopScanningAfterInterval() {
+    @objc func stopScanningAfterInterval() {
             if self.centralManager!.isScanning {
                 self.centralManager?.stopScan()
             }
     }
     // MARK: Connection Process
-    func connectPeripheralDevice(peripheral: CBPeripheral, options: [String : Any]?) {
+    @objc func connectPeripheralDevice(peripheral: CBPeripheral, options: [String : Any]?) {
         self.centralManager?.connect(peripheral, options: options)
     }
-    func disconnectPeripheralDevice(peripheral: CBPeripheral) {
+    @objc func disconnectPeripheralDevice(peripheral: CBPeripheral) {
             self.centralManager?.cancelPeripheralConnection(peripheral)
     }
     // MARK: Discover Services
-    func discoverAllServices(peripheral: CBPeripheral) {
+    @objc func discoverAllServices(peripheral: CBPeripheral) {
         peripheral.discoverServices(nil)
     }
-    func discoverServiceByUUIDs(servicesUUIDs: NSArray, peripheral: CBPeripheral) {
+    @objc func discoverServiceByUUIDs(servicesUUIDs: NSArray, peripheral: CBPeripheral) {
         peripheral.discoverServices(servicesUUIDs as? [CBUUID])
     }
     // MARK: Discover Characteristics
-    func discoverAllCharacteristics(peripheral: CBPeripheral, service: CBService) {
+    @objc func discoverAllCharacteristics(peripheral: CBPeripheral, service: CBService) {
         peripheral.discoverCharacteristics(nil, for: service)
     }
-    func discoverCharacteristicsByUUIDs(charUUIds: NSArray, peripheral: CBPeripheral, service: CBService) {
+    @objc func discoverCharacteristicsByUUIDs(charUUIds: NSArray, peripheral: CBPeripheral, service: CBService) {
         peripheral.discoverCharacteristics(charUUIds as? [CBUUID], for: service)
     }
     // MARK: Discover Descriptors
-    func discoverDescriptorsByCharacteristic(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+    @objc func discoverDescriptorsByCharacteristic(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
         peripheral.discoverDescriptors(for: characteristic)
     }
-    func writeCharacteristicValue(peripheral: CBPeripheral, data: Data, char: CBCharacteristic, type: CBCharacteristicWriteType) {
+    @objc func writeCharacteristicValue(peripheral: CBPeripheral, data: Data, char: CBCharacteristic, type: CBCharacteristicWriteType) {
         peripheral.writeValue(data, for: char, type: type)
     }
     // MARK: BLE Properties Reterival
-    func readCharacteristicValue(peripheral: CBPeripheral, char: CBCharacteristic) {
+    @objc func readCharacteristicValue(peripheral: CBPeripheral, char: CBCharacteristic) {
         peripheral.readValue(for: char)
     }
-    func setNotifyValue(peripheral: CBPeripheral, enabled: Bool, char: CBCharacteristic) {
+    @objc func setNotifyValue(peripheral: CBPeripheral, enabled: Bool, char: CBCharacteristic) {
        peripheral.setNotifyValue(enabled, for: char)
     }
-    func writeDescriptorValue(peripheral: CBPeripheral, data: Data, descriptor: CBDescriptor) {
+    @objc func writeDescriptorValue(peripheral: CBPeripheral, data: Data, descriptor: CBDescriptor) {
         peripheral.writeValue(data, for: descriptor)
     }
-    func readDescriptorValue(peripheral: CBPeripheral, descriptor: CBDescriptor) {
+    @objc func readDescriptorValue(peripheral: CBPeripheral, descriptor: CBDescriptor) {
         peripheral.readValue(for: descriptor)
     }
     // MARK: Read RSSI Value
-    func readRSSI(peripheral: CBPeripheral) {
+    @objc func readRSSI(peripheral: CBPeripheral) {
         peripheral.readRSSI()
     }
-    func getConnectedPeripherals(serviceUUIds: NSArray) -> NSArray? {
+    @objc func getConnectedPeripherals(serviceUUIds: NSArray) -> NSArray? {
         return self.centralManager?.retrieveConnectedPeripherals(withServices: (serviceUUIds as? [CBUUID])!) as NSArray?
     }
-    func applyStopScanTimer() {
+    @objc func applyStopScanTimer() {
         stopScanTimer = Timer.scheduledTimer(timeInterval: TimeInterval(15.0), target: self, selector: #selector(stopScanningAfterInterval), userInfo: nil, repeats: false)
     }
 }

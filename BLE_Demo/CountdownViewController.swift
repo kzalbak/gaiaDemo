@@ -24,7 +24,7 @@ class CountdownViewController: UIViewController, CountdownTimerDelegate {
     
     //MARK - Vars
     
-    var countdownTimerDidStart = false
+    @objc var countdownTimerDidStart = false
     
     lazy var countdownTimer: CountdownTimer = {
         let countdownTimer = CountdownTimer()
@@ -33,13 +33,13 @@ class CountdownViewController: UIViewController, CountdownTimerDelegate {
     
     
     // Test, for dev
-    let selectedSecs:Int = 20
+    @objc let selectedSecs:Int = 20
     
     
-    lazy var messageLabel: UILabel = {
+    @objc lazy var messageLabel: UILabel = {
         let label = UILabel(frame:CGRect.zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 24.0, weight: UIFontWeightLight)
+        label.font = UIFont.systemFont(ofSize: 24.0, weight: UIFont.Weight.light)
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.text = "Done!"
@@ -101,7 +101,7 @@ class CountdownViewController: UIViewController, CountdownTimerDelegate {
     }
     
     
-    func countdownTimerDone() {
+    @objc func countdownTimerDone() {
         
         counterView.isHidden = true
         messageLabel.isHidden = false
