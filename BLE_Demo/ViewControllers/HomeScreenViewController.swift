@@ -337,7 +337,7 @@ class HomeScreenViewController: UIViewController, CBCentralManagerDelegate,CBPer
     
     
     @IBAction func playGame(_ sender: Any) {
-        self.performSegue(withIdentifier: "goGame", sender: self)
+        self.performSegue(withIdentifier: "ninjaGame", sender: self)
     }
     
     /*

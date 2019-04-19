@@ -97,7 +97,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
+<<<<<<< HEAD:BLE_Demo/ViewController.swift
      @objc func pairingAction(_ sender: AnyObject) {
+=======
+    @objc func pairingAction(_ sender: AnyObject) {
+>>>>>>> 2d5f0b2375c369c0db9578bbbf70430c7d61cf47:BLE_Demo/ViewControllers/ViewController.swift
         self.view.isUserInteractionEnabled = false
         self.activityIndicator.startAnimating()
         let pairTag: Int? = sender.tag
@@ -137,8 +141,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print(self.connectedPeripheral?.name)
         return self.connectedPeripheral
     }
+<<<<<<< HEAD:BLE_Demo/ViewController.swift
     @objc func setServiceNavigation() {
          navigationController!.navigationBar.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.font.rawValue: UIFont(name: "Helvetica Neue", size: 12.0)!, NSAttributedString.Key.foregroundColor.rawValue: UIColor.black])
+=======
+    func setServiceNavigation() {
+        navigationController!.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Helvetica Neue", size: 12.0)!, NSAttributedStringKey.foregroundColor: UIColor.black]
+>>>>>>> 2d5f0b2375c369c0db9578bbbf70430c7d61cf47:BLE_Demo/ViewControllers/ViewController.swift
     }
 
     //Scan for devices
