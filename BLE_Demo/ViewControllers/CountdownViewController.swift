@@ -39,7 +39,7 @@ class CountdownViewController: UIViewController, CountdownTimerDelegate {
     @objc lazy var messageLabel: UILabel = {
         let label = UILabel(frame:CGRect.zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 24.0, weight: UIFont.Weight.light)
+        label.font = UIFont.systemFont(ofSize: 24.0, weight: UIFontWeightLight)
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.text = "Done!"

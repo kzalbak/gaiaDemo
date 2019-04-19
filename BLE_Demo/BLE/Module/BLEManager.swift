@@ -168,7 +168,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     @objc func stopScan() {
         centralManager?.stopScan()
     }
-    @objc func stopScanningAfterInterval() {
+    func stopScanningAfterInterval() {
             if self.centralManager!.isScanning {
                 self.centralManager?.stopScan()
             }
